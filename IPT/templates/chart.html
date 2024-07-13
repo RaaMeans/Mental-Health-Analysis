@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ chart_name }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">{{ chart_name }}</h1>
+    <p class="text-center">{{ chart_description }}</p>
+    <iframe src="{{ url_for('static', filename=chart_path) }}" width="100%" height="600px" frameborder="0"></iframe>
+    <div class="text-center mt-4">
+        {% if chart_id > 0 %}
+        <a href="{{ url_for('show_chart', chart_id=chart_id - 1) }}" class="btn btn-primary">Previous</a>
+        {% endif %}
+        {% if chart_id < total_charts - 1 %}
+        <a href="{{ url_for('show_chart', chart_id=chart_id + 1) }}" class="btn btn-primary">Next</a>
+        {% endif %}
+        <a href="{{ url_for('summary') }}" class="btn btn-secondary">Back to Summary</a>
+    </div>
+</div>
+</body>
+</html>

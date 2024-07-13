@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .row.content {height: 550px}
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    .well.fixed-height {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 150px; /* Ensures all wells have the same height */
+      text-align: center;
+    }
+    .well.scrollable {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Dataframe</a></li>
+        <li><a href="#">Insights</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12">
+      <div class="well scrollable">
+        <div class="summary-table">
+          {{ summary_data | safe }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Total Records</h4>
+            <p>{{ total_records }}</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Gender Distribution</h4>
+            <a href="{{ url_for('show_chart', chart_id=0) }}" class="btn btn-primary">View Chart</a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Country Distribution</h4>
+            <a href="{{ url_for('show_chart', chart_id=1) }}" class="btn btn-primary">View Chart</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Mental Health History Treatment</h4>
+            <a href="{{ url_for('show_chart', chart_id=2) }}" class="btn btn-primary">View Chart</a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Days Indoors & Stress</h4>
+            <a href="{{ url_for('show_chart', chart_id=3) }}" class="btn btn-primary">View Chart</a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well fixed-height">
+            <h4>Family History Treatment</h4>
+            <a href="{{ url_for('show_chart', chart_id=4) }}" class="btn btn-primary">View Chart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

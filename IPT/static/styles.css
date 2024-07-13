@@ -1,0 +1,17 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+img {
+    margin-top: 20px;
+}
